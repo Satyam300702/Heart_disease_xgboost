@@ -6,6 +6,7 @@ This project predicts the likelihood of a patient having heart disease using the
 The model is trained on patient data with features like age, gender, cholesterol levels, blood pressure, and other medical parameters.
 
 ---
+live Demo "https://aepmmkqsc4zabazdqcstju.streamlit.app/"
 
 ## Dataset
 The dataset used in this project contains patient information and heart disease diagnosis. You can download it from: [link to dataset] (or use your local `heart.csv`).
