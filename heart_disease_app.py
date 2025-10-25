@@ -8,14 +8,20 @@ Created on Sat Oct 25 09:32:12 2025
 import numpy as np
 import pickle
 import streamlit as st
+import os
 
+model_path = os.path.join(os.path.dirname(__file__), "heart_disease1.sav")
+try:
+    heart_model = pickle.load(open(model_path, "rb"))
+except FileNotFoundError:
+    st.error("Model file not found! Make sure 'heart_disease1.sav' is in the same folder as this app.")
+    st.stop()
 
-heart_disease_1 = pickle.load(open("C:/Users/HP/OneDrive/Desktop/Deploying machine learning/heart_disease1.sav","rb"))
                                 
 
 def heart_prediction(input_data):
     input_data_as_np_array = np.asarray(input_data).reshape(1,-1)
-    prediction = heart_disease_1.predict(input_data_as_np_array)
+    prediction = heart_model.predict(input_data_as_np_array)
     prediction
     
     if prediction[0] == 0:
@@ -38,7 +44,7 @@ def main():
     oldpeak = st.number_input("ST depression induced by excerise (oldpeak)")
     slope =  st.number_input("Slope of ST segment (0-2)(slope)")
     ca = st.number_input("Number of major vessels (0-3)(ca)")
-    thal = st.number_input("Thalassemia(thal)")
+    thal = st.number_input("Thalassemia")
     
  
     heart = ""
